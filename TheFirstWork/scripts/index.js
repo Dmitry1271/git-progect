@@ -31,3 +31,10 @@ button.disabled = true;
 }
 
 
+/*
+Here are the details of your new API account.
+Application name	Abaddon1271
+API key	6bfde9f75bb686cfaf1acc61a7abd5cd
+Shared secret	f2440417c4dc962a357d66d6edb5aee1
+Registered to	Abaddon1271
+*/
