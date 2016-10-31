@@ -11,24 +11,33 @@ function callbackFunc(result) {
 
 function getJson(url)
 {
-var xhr =new XMLHttpRequest();
-xhr.open('GET', url ,true);
-xhr.send(); 
+	var data;
+	var template = Handlebars.compile( $('#template').html() );
+	var xhr =new XMLHttpRequest();
+	xhr.open('GET', url ,true);
+	xhr.send(); 
 
-xhr.onreadystatechange = function(){
-	if(xhr.readyState != 4) 
-		return;
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState != 4) 
+			return;
 
 		button.innerHTML = "Готово!";
 
-	if(xhr.status != 200) alert(xhr.status + ": " + xhr.statusText);
-	else console.log(xhr.responseText);
-}
+		if(xhr.status != 200) alert(xhr.status + ": " + xhr.statusText);
+		else {
+			data = xhr.responseText;
+			console.log(data);
+			$('.updates').append( template(data) );
+		}
+	}
+
+	
 
 
-button.innerHTML = "Загрузка...";
-button.disabled = true;
+	button.innerHTML = "Загрузка...";
+	button.disabled = true;
 }
+
 
 
 /*
