@@ -13,13 +13,14 @@ var info = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=6bfde
 function getJson(url)
 {
 	return new Promise(function(resolve,reject){
-		var data;
-		var template = Handlebars.compile( $('#template').html() );
 		var xhr =new XMLHttpRequest();
 		xhr.open('GET', url ,true);
-		//xhr.responseType = 'json';
+		xhr.responseType = 'json';
 		xhr.onload = function(){
-			if(xhr.status == 200) resolve(xhr.response);
+			if(this.status == 200) 
+				{
+					resolve(this.response);
+				}
 			if(this.status == 0)
 			{
 				var error0 = new Error(this.statusText);
@@ -53,19 +54,22 @@ getJson('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=6bfde9f7
 	.then(
 		response =>{
 			console.log(response);
+			var data;
+		  var template = Handlebars.compile( $('#template').html() );
+			$('.updates').append( template(response) );
+		},
 			error0 =>{
 				alert('Connection lost. Please check your Internet connection!')
-			} 
+			} ,
 			error403 =>{
 				alert('Forbidden')
-			} 
+			} ,
 			error404 =>{
 				alert('Not found')
-			} 
+			}, 
 			error500 =>{
 				alert('Internal server error')
-			} 
-		});
+			});
 
 
 

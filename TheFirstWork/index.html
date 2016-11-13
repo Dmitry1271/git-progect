@@ -8,15 +8,11 @@
 <body>
 	<ul class="updates">
 		<script id="template" type="text/x-handlebars-template">
-			{{#each this}}
 			<li>
 				<h2>{{album.name}}</h2>
-				<p>{{artist}}</p>
-				<p>{{mbid}}</p>
-				<p>{{url}}</p>
-				{{name}}
+				<p>{{album.artist}}</p>
+				<p>{{album.mbid}}</p>
 			</li>
-			{{/each}}
 		</script>
 	</ul>
 
