@@ -6,23 +6,16 @@
 </head>
 
 <body>
-	<button onclick="getJson('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=6bfde9f75bb686cfaf1acc61a7abd5cd&artist=Cher&album=Believe&format=json')" id="button">Загрузить</button>
-
-
 	<ul class="updates">
 		<script id="template" type="text/x-handlebars-template">
-			{{#each album}}
+			{{#each this}}
 			<li>
-				<h2>{{name}}</h2>
+				<h2>{{album.name}}</h2>
 				<p>{{artist}}</p>
 				<p>{{mbid}}</p>
 				<p>{{url}}</p>
-				{{#each #text}}
-			  {{image}}
-			  {{size}}
+				{{name}}
 			</li>
-
-			{{/each}}
 			{{/each}}
 		</script>
 	</ul>
